@@ -1,0 +1,26 @@
+{
+  "name": "svelte-store-webmonetization",
+  "version": "0.0.1",
+  "description": "Svelte store for WebMonetization ",
+  "main": "src/index.js",
+  "scripts": {
+  },
+  "peerDependencies": {
+    "svelte": ">= 1.43.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mankins/svelte-store-webmonetization.git"
+  },
+  "author": "Matt Mankins",
+  "keywords": [
+    "svelte",
+    "store",
+    "web monetization"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mankins/svelte-store-webmonetization/issues"
+  },
+  "homepage": "https://github.com/mankins/svelte-store-webmonetization#readme"
+}
