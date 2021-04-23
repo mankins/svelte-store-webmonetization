@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Svelte store for WebMonetization ",
   "main": "src/index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "peerDependencies": {
     "svelte": ">= 1.43.0"
   },
