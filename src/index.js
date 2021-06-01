@@ -21,8 +21,9 @@ const webmonStore = () => {
 };
 
 function init() {
+  const wm = document.monetization;
   // try to bail early if we don't have support
-  if (!document.monetization) {
+  if (!wm) {
     update((store) => {
       store.status = "missing-webmon";
       store.monetized = false;
@@ -33,36 +34,36 @@ function init() {
 
   try {
     // check the current state right away
-    const { state } = document.monetization;
     update((store) => {
       store.status = "supports-webmon";
-      store.state = state;
+      store.state = wm.state;
       return store;
     });
 
     // setup our start event listener
-    document.monetization.addEventListener("monetizationstart", (ev) => {
+    wm.addEventListener("monetizationstart", (ev) => {
       update((store) => {
         store.monetized = true;
-        store.state = state;
+        store.state = wm.state;
         return store;
       });
     });
-    document.monetization.addEventListener("monetizationstarted", (ev) => {
+    // @ts-ignore
+    wm.addEventListener("monetizationstarted", (ev) => {
       update((store) => {
         store.monetized = true;
-        store.state = state;
+        store.state = wm.state;
         return store;
       });
     });
 
     // setup our progress event listener
-    document.monetization.addEventListener("monetizationprogress", (ev) => {
+    wm.addEventListener("monetizationprogress", (ev) => {
       // debounce?
       update((store) => {
         store.progress = { ev, ts: Date.now() };
-        store.state = state;
-        if (state === "started") {
+        store.state = wm.state;
+        if (wm.state === "started") {
           store.monetized = true;
         } else {
           store.monetized = false;
@@ -72,10 +73,10 @@ function init() {
     });
 
     // check the initial state
-    if (state === "stopped") {
+    if (wm.state === "stopped") {
       update((store) => {
         store.monetized = false;
-        store.state = state;
+        store.state = wm.state;
         return store;
       });
     }
